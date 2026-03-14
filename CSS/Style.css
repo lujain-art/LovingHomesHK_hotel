@@ -1,0 +1,404 @@
+/* ============================================================
+   Loving Homes Dog Hotel — Shared Stylesheet (V2.0)
+   Structure:
+   1. Google Fonts embed (Cairo)
+   2. Local font (Good Pawoo Display)
+   3. CSS Variables
+   4. Reset & Base
+   5. Shared Components:
+      - Toolbar
+      - Site Header
+      - Navbar
+      - Footer & Social Icons
+      - UserWay override
+   6. Utility classes
+============================================================ */
+
+/* ── 1. Google Fonts — Cairo (all weights, Arabic + Latin) ── */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
+
+/* ── 2. Local font — Good Pawoo Display (personal/study use only) ── */
+@font-face {
+    font-family: 'GoodPawoo';
+    src: url('../Text Files/GoodPawooDisplay-qZd96.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ── 3. CSS Variables ── */
+:root {
+    --color-brown:      #5c3d1e;
+    --color-brown-dark: #3d2810;
+    --color-green:      #7ab648;
+    --color-green-dark: #5e8e35;
+    --color-beige:      #f5f0e0;
+    --color-beige-mid:  #f9f6f0;
+    --color-black-bar:  #1a1a1a;
+    --color-text:       #333333;
+    --color-white:      #ffffff;
+
+    --font-display: 'GoodPawoo', 'Cairo', Georgia, serif;
+    --font-body:    'Cairo', Georgia, serif;
+
+    --radius-card:  12px;
+    --radius-btn:   20px;
+    --shadow-card:  0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.13);
+    --transition:   0.25s ease;
+}
+
+/* ── 4. Reset & Base ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    background: var(--color-white);
+    color: var(--color-text);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ── 5a. Toolbar ── */
+.toolbar {
+    background: var(--color-black-bar);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 6px 16px;
+    direction: ltr;   /* always LTR regardless of language */
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: var(--color-white);
+    padding: 3px 12px;
+    border-radius: var(--radius-btn);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    transition: background var(--transition), border-color var(--transition);
+}
+.lang-btn:hover,
+.lang-btn.active {
+    background: var(--color-green);
+    border-color: var(--color-green);
+}
+
+.toolbar-sep {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.85rem;
+    user-select: none;
+}
+
+/* ── 5b. Site Header (logo bar) ── */
+.site-header {
+    background: var(--color-brown);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+}
+.site-header img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+
+/* ── 5c. Navbar ── */
+.navbar {
+    background: var(--color-green);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    direction: ltr;   /* always LTR */
+    flex-wrap: wrap;
+}
+.navbar a {
+    color: var(--color-brown);
+    text-decoration: none;
+    padding: 14px 16px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 700;
+    transition: background var(--transition), color var(--transition);
+    white-space: nowrap;
+}
+.navbar a:hover { background: #ddd; color: #000; }
+.navbar a.active { background: var(--color-brown); color: var(--color-white); }
+
+
+
+/* ── 5d. Footer ── */
+.footer {
+    background: var(--color-brown);
+    color: var(--color-white);
+    text-align: center;
+    padding: 16px 10px 12px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    margin-top: 0;
+}
+
+/* Ensure content never disappears behind footer */
+#content-area {
+    padding-bottom: 40px;
+}
+
+/* Full-height layout so footer sticks to bottom on short pages */
+html, body {
+    min-height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+#content-area {
+    flex: 1;
+}
+.footer p { margin-bottom: 6px; }
+
+/* Social icons row */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 8px;
+}
+.social-icons a img {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    transition: transform var(--transition);
+}
+.social-icons a img:hover { transform: scale(1.25); }
+
+/* ── 5e. UserWay — bottom-left, brand colours ── */
+/* CSS fallback; JS in each page does the reliable override */
+.uwy.uwy-default,
+#userwayWidgetIcon {
+    bottom: 20px !important;
+    left:   20px !important;
+    right:  auto !important;
+    top:    auto !important;
+}
+
+/* ── 6. Utility classes ── */
+.page-heading {
+    padding: 28px 24px 8px;
+    color: var(--color-green);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    font-family: 'GoodPawoo', 'Cairo', Georgia, serif;
+}
+.page-intro {
+    padding: 0 24px 24px;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-family: var(--font-body);
+}
+
+/* Section title with green underline */
+.section-title {
+    color: var(--color-brown);
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    margin-bottom: 14px;
+    font-family: var(--font-body);
+    position: relative;
+    padding-bottom: 8px;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 50px; height: 3px;
+    background: var(--color-green);
+    border-radius: 2px;
+}
+
+/* Card base */
+.card-base {
+    background: var(--color-beige);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+.card-base:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* ── Language-specific fonts ──
+   EN  → GoodPawoo (display/body)
+   AR  → Cairo (best Arabic support)
+   ZH  → Cairo (best CJK fallback) */
+
+/* Good Pawoo — main display headings only */
+h1,
+.home-text h1,
+.page-heading,
+.about-hero-text h1,
+.pkg-front h2,
+.section-title {
+    font-family: 'GoodPawoo', 'Cairo', Georgia, serif;
+}
+
+/* AR override — switch everything back to Cairo */
+[lang="ar"] h1,
+[lang="ar"] .home-text h1,
+[lang="ar"] .page-heading,
+[lang="ar"] .about-hero-text h1,
+[lang="ar"] .pkg-front h2 {
+    font-family: 'Cairo', Georgia, serif;
+}
+
+/* ZH override — switch everything back to Cairo */
+[lang="zh"] h1,
+[lang="zh"] .home-text h1,
+[lang="zh"] .page-heading,
+[lang="zh"] .about-hero-text h1,
+[lang="zh"] .pkg-front h2 {
+    font-family: 'Cairo', Georgia, serif;
+}
+
+
+/* ── Scroll hint ── */
+.scroll-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    z-index: 11;
+    opacity: 1;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+.scroll-hint.hidden { opacity: 0; }
+.scroll-hint img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.6));
+    display: block;
+}
+/* ── Music toggle button ── */
+.music-btn {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.45);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+    padding: 0;
+}
+.music-btn:hover {
+    background: rgba(122, 182, 72, 0.75);
+    transform: scale(1.1);
+}
+.music-btn img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: block;
+}
+.hero-container {
+    position: relative;
+    overflow: visible;
+}
+
+
+
+/* ============================================================
+   Hamburger Menu — mobile navigation
+   Shows hamburger button on screens < 768px
+   Hides it on desktop
+============================================================ */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: var(--color-brown);
+    border-radius: 3px;
+    transition: transform 0.3s, opacity 0.3s, width 0.3s;
+    transform-origin: center;
+}
+
+/* Animate to X when open */
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* Navbar wrapper needs relative positioning for hamburger */
+.navbar {
+    position: relative;
+}
+
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Hide all links by default on mobile */
+    .navbar a {
+        display: none;
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+        border-top: 1px solid rgba(92, 61, 30, 0.15);
+        font-size: 1rem;
+    }
+
+    /* When menu is open, show links stacked */
+    .navbar.nav-open a {
+        display: block;
+    }
+
+    /* Keep the navbar as a column when open */
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding-top: 52px; /* space for hamburger button */
+    }
+
+    /* Hide logo area padding on mobile */
+    .site-header img {
+        width: 90px;
+        height: 90px;
+    }
+}
