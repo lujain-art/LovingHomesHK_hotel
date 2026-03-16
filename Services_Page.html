@@ -153,15 +153,27 @@
     </script>
     <script>
         (function () {
-            var btn = document.getElementById('hamburger');
-            var nav = document.querySelector('.navbar');
-            if (!btn || !nav) return;
+            var btn     = document.getElementById('music-btn');
+            var audio   = document.getElementById('bg-music');
+            var icon    = document.getElementById('music-icon');
+            var playing = false;
+            if (!btn) return;
             btn.addEventListener('click', function () {
-                var open = nav.classList.toggle('nav-open');
-                btn.classList.toggle('open', open);
-                btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                if (playing) {
+                    audio.pause();
+                    icon.src = '../Pictures/mute.gif';
+                    icon.alt = 'Music off';
+                    btn.setAttribute('aria-label', 'Play background music');
+                    playing = false;
+                } else {
+                    audio.play().catch(function(){});
+                    icon.src = '../Pictures/sound.gif';
+                    icon.alt = 'Music on';
+                    btn.setAttribute('aria-label', 'Pause background music');
+                    playing = true;
+                }
             });
-            nav.querySelectorAll('a').forEach(function (a) {
-                a.addEventListener('click', function () {
-                    nav.classList.remove('nav-open');
-                    btn.classList.remov
+        })();
+    </script>
+</body>
+</html>

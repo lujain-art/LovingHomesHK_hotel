@@ -153,12 +153,19 @@
             btn.addEventListener('click', function () {
                 if (playing) {
                     audio.pause();
-                    icon.src = 'Pictures/mute.gif';
+                    icon.src = '../Pictures/mute.gif';
                     icon.alt = 'Music off';
                     btn.setAttribute('aria-label', 'Play background music');
                     playing = false;
                 } else {
                     audio.play().catch(function(){});
-                    icon.src = 'Pictures/sound.gif';
+                    icon.src = '../Pictures/sound.gif';
                     icon.alt = 'Music on';
-                    btn.setAttribute(
+                    btn.setAttribute('aria-label', 'Pause background music');
+                    playing = true;
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
