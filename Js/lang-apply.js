@@ -1,10 +1,10 @@
 /* lang-apply.js — DOM interaction & event wiring.
    Requires lang-data.js to be loaded first (in <head>).
-   This file is placed at the END of <body> as before. */
+   This file is placed at the END of <body>. */
 
 var lang = localStorage.getItem('lh_lang') || 'en';
 
-function applyLang(l, activatedByUser) {
+function applyLang(l) {
     lang = l;
     localStorage.setItem('lh_lang', l);
     var t = TRANSLATIONS[l];
@@ -58,10 +58,58 @@ function applyLang(l, activatedByUser) {
     if (hideStyle) { hideStyle.parentNode.removeChild(hideStyle); }
 }
 
-/* Wire up buttons & run once on load */
+/* Wire up everything on DOMContentLoaded */
 document.addEventListener('DOMContentLoaded', function () {
+
+    /* --- Language buttons --- */
     document.querySelectorAll('.lang-btn').forEach(function (b) {
-        b.addEventListener('click', function () { applyLang(b.dataset.lang, true); });
+        b.addEventListener('click', function () {
+            applyLang(b.dataset.lang);
+        });
     });
-    applyLang(lang, false);
+
+    /* Apply saved/default language on every page load */
+    applyLang(lang);
+
+    /* --- Hamburger menu (works on ALL pages) --- */
+    var hamburger = document.getElementById('hamburger');
+    var navbar    = document.querySelector('.navbar');
+    if (hamburger && navbar) {
+        hamburger.addEventListener('click', function () {
+            var open = navbar.classList.toggle('nav-open');
+            hamburger.classList.toggle('open', open);
+            hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        navbar.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                navbar.classList.remove('nav-open');
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+    /* --- Music button (works on ALL pages) --- */
+    var musicBtn = document.getElementById('music-btn');
+    var audio    = document.getElementById('bg-music');
+    var icon     = document.getElementById('music-icon');
+    var playing  = false;
+    if (musicBtn && audio && icon) {
+        musicBtn.addEventListener('click', function () {
+            if (playing) {
+                audio.pause();
+                icon.src = 'Pictures/mute.gif';
+                icon.alt = 'Music off';
+                musicBtn.setAttribute('aria-label', 'Play background music');
+                playing = false;
+            } else {
+                audio.play().catch(function () {});
+                icon.src = 'Pictures/sound.gif';
+                icon.alt = 'Music on';
+                musicBtn.setAttribute('aria-label', 'Pause background music');
+                playing = true;
+            }
+        });
+    }
+
 });
