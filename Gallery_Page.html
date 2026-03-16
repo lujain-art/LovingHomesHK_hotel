@@ -47,7 +47,7 @@
         #lightbox-prev:hover,#lightbox-next:hover { background:rgba(122,182,72,0.7); }
     </style>
     <!-- Language: load translations immediately to prevent flash -->
-    <script src="lang-data.js"></script>
+    <script src="Js/lang-data.js"></script>
     <script>
         (function(){
             var l=localStorage.getItem("lh_lang");
@@ -132,7 +132,7 @@
             </a>
         </div>
     </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="lang-apply.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="Js/lang-apply.js"></script>
     <script>
         var items = Array.from(document.querySelectorAll('.gallery-item'));
         var cur = 0;
@@ -149,3 +149,5 @@
         lb.addEventListener('click',function(e){ if(e.target===lb) closeLB(); });
         document.addEventListener('keydown',function(e){ if(!lb.classList.contains('open')) return; if(e.key==='Escape') closeLB(); if(e.key==='ArrowLeft') nav(-1); if(e.key==='ArrowRight') nav(1); });
     </script>
+</body>
+</html>
