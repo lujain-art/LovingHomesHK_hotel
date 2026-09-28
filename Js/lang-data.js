@@ -61,7 +61,7 @@ var TRANSLATIONS = {
     status_fill:"Please fill in all required fields.",
     status_sending:"Sending…",
     footer_text:"© 2026 Loving Homes Dog Hotel - All rights reserved - Hong Kong",
-    footer_credit:"Designed & Developed by Lujain Omar Al-Khalifat",
+    footer_credit:"Designed & Developed by Loʘk",
   },
   ar: {
     nav_home:"الرئيسية", nav_services:"الخدمات", nav_packages:"الباقات",
@@ -183,6 +183,6 @@ var TRANSLATIONS = {
     status_fill:"請填寫所有必填欄位。",
     status_sending:"正在送出…",
     footer_text:"© 2026 Loving Homes 寵物酒店 - 版權所有 - 香港",
-    footer_credit:"設計與開發：Lujain Omar Al-Khalifat",
+    footer_credit:"設計與開發：Loʘk",
   }
 };
