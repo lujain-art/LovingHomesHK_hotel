@@ -50,7 +50,7 @@ function applyLang(l) {
     };
     var waText = waMessages[l] || waMessages['en'];
     document.querySelectorAll('.soc-whatsapp').forEach(function (a) {
-        a.href = 'https://wa.me/962779462452?text=' + encodeURIComponent(waText);
+        a.href = 'https://wa.me/962775444643?text=' + encodeURIComponent(waText);
     });
 
     /* Reveal page — remove the hide-style injected by the inline head script */
