@@ -122,7 +122,7 @@ var TRANSLATIONS = {
     status_fill:"يرجى ملء جميع الحقول المطلوبة.",
     status_sending:"جارٍ الإرسال…",
     footer_text:"© 2026 فندق لوفينج هومز للكلاب - جميع الحقوق محفوظة - هونغ كونغ",
-    footer_credit:"تصميم وتطوير: لجين عمر الخليفات",
+    footer_credit:"تصميم وتطوير: Loʘk",
   },
   zh: {
     nav_home:"首頁", nav_services:"服務", nav_packages:"套餐",
